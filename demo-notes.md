@@ -10,6 +10,7 @@
     * autobisectjs
       * Bisects patches back in time to find the regressing changeset
   * [FuzzManager](https://github.com/MozillaSecurity/FuzzManager) (Reporting tool)
+  * Most security bugs found by the public are eligible for bounties via the [Mozilla Bug Bounty program](https://www.mozilla.org/en-US/security/client-bug-bounty/) for USD2000-5000 depending on the severity of the bug, as judged by the Mozilla security team
 
 ===
 
