@@ -89,8 +89,7 @@
   * Ideally we should set it up properly using Apache/WSGI
     * However for demonstration purposes we shall use `runserver` and run FuzzManager in development mode locally
   * Clone FuzzManager
-    * `cd ~`
-    * `git clone https://github.com/MozillaSecurity/FuzzManager`
+    * `git clone https://github.com/MozillaSecurity/FuzzManager` ~/FuzzManager
   * Install FuzzManager server requirements
     * `cd ~/FuzzManager`
     * `pip install --user --upgrade -r server/requirements.txt`
