@@ -123,10 +123,11 @@ tool = jsfunfuzz
 ===
 
 * Areas that can be improved:
+  * Audit tested language features in jsfunfuzz
   * Switch to using Python 3
     * A lot of custom APIs for early versions of Python 2 have already been removed
     * funfuzz has a long history, hailing from >10 years ago
-      * Ported from bash scripts during the days when the latest Python was 2.4/2.5
+      * Ported from bash scripts during the Python 2.4/2.5 days
   * Switch to Docker ([FuzzOS](https://github.com/MozillaSecurity/fuzzos))
   * Add more tests (currently only 50%)
     * We already have Travis/AppVeyor CI integration
