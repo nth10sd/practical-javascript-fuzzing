@@ -114,7 +114,7 @@ sigdir = /home/<username>/sigdir/
 tool = jsfunfuzz
 ```
   * Make sure to use **https** when deploying a production FuzzManager server
-  * Still in the `server/` directory, start up FuzzManager:
+  * Still in the `server/` directory, start up FuzzManager in developmental mode (only for this presentation purpose):
     * `python manage.py runserver`
 
 * If bugs are hit, they should be submitted to your instance of FuzzManager.
