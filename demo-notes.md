@@ -132,7 +132,7 @@ tool = jsfunfuzz
     * We already have Travis/AppVeyor CI integration
     * The projects also integrate with `codecov.io`
 
-* Caveat:
+* Caveats:
   * It is recommended to fuzz on a machine in as native a manner as possible
     * Known to work on Linux/macOS/Windows (0.1 legacy branch for now, until Python 3 migration is complete)
     * Known to work on Amazon EC2
