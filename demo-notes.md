@@ -130,7 +130,7 @@ tool = jsfunfuzz
     * funfuzz has a long history, hailing from >10 years ago
       * Ported from bash scripts during the Python 2.4/2.5 days
   * Switch to Docker ([FuzzOS](https://github.com/MozillaSecurity/fuzzos))
-  * Add more tests (currently only 50%)
+  * Add more tests (currently only 45-50%)
     * We already have Travis/AppVeyor CI integration
     * The projects also integrate with `codecov.io`
 
