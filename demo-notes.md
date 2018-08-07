@@ -33,8 +33,8 @@
     * `cd ~/trees`
     * `hg clone https://hg.mozilla.org/mozilla-central/ mozilla-central`
     * Note that the harness might make assumptions for repository being in `~/trees`
-    * Then **Mercurial was removed** (via apt-get)
-    * Reason: We should install and update Mercurial using pip instead (will be shown during the demo)
+    * ~~Then **Mercurial was removed** (via apt-get)~~
+    * ~~Reason: We should install and update Mercurial using pip instead (will be shown during the demo)~~
   * [Rust](https://rustup.rs/) was installed (`bootstrap.py` requires this)
     * You might need to first `apt-get install curl`
     * Also run `rustup target add i686-unknown-linux-gnu` to compile 32-bit builds
