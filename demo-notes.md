@@ -1,4 +1,5 @@
 * Projects involved in this demonstration
+  * [Slide overview](https://github.com/nth10sd/2015-Fuzzing-and-Mozilla)
   * [mozilla-central](https://hg.mozilla.org/mozilla-central/)
   * [funfuzz](https://github.com/MozillaSecurity/funfuzz) (Main harness)
     * [jsfunfuzz](https://github.com/MozillaSecurity/funfuzz/tree/master/src/funfuzz/js/jsfunfuzz)
@@ -15,8 +16,8 @@
 ===
 
 * How to create the VM:
-  * Install [VirtualBox](https://www.virtualbox.org/) - version used is 5.2.12
-    * Install "VirtualBox 5.2.12 Oracle VM VirtualBox Extension Pack" as well
+  * Install [VirtualBox](https://www.virtualbox.org/) - version used is 5.2.16
+    * Install "VirtualBox 5.2.16 Oracle VM VirtualBox Extension Pack" as well
   * Download and install [Ubuntu Linux 18.04 Desktop](https://www.ubuntu.com/desktop) into a VM
     * VM settings: minimal installation, download updates during install, install 3rd party packages
     * VM specs: 4 processors, 64GB disk space, ~6GB RAM (for reference)
@@ -33,9 +34,10 @@
     * `hg clone https://hg.mozilla.org/mozilla-central/ mozilla-central`
     * Note that the harness might make assumptions for repository being in `~/trees`
     * Then **Mercurial was removed** (via apt-get)
-    * Reason: We should install and update Mercurial using `pip` instead (will be shown during the demo)
+    * Reason: We should install and update Mercurial using pip instead (will be shown during the demo)
   * [Rust](https://rustup.rs/) was installed (`bootstrap.py` requires this)
     * You might need to first `apt-get install curl`
+    * Also run `rustup target add i686-unknown-linux-gnu` to compile 32-bit builds
     * `echo 'source /home/<your username>/.cargo/env' >> ~/.bashrc`
   * Testcase for [bug 1465693](https://bugzilla.mozilla.org/show_bug.cgi?id=1465693) downloaded in advance
     * Demo bug
@@ -62,7 +64,7 @@
     * `lib32z1 gcc-7-multilib g++-7-multilib` (for compiling 32-bit binaries on 64-bit host)
     * `apache2-utils` (for FuzzManager)
 
-* Clone [funfuzz](https://github.com/MozillaSecurity/funfuzz) off GitHub and install it via `pip`
+* Clone [funfuzz](https://github.com/MozillaSecurity/funfuzz) off GitHub and install it via pip
   * `git clone https://github.com/MozillaSecurity/funfuzz ~/funfuzz`
   * `pushd ~/funfuzz && python3 -m pip install --user --upgrade -r requirements.txt && popd`
     * You need to be in the funfuzz directory for the requirements to be installed properly
@@ -86,11 +88,13 @@
 * Compile a 64-bit debug deterministic SpiderMonkey shell:
   * `python3 -u -m funfuzz.js.compile_shell -b "--enable-debug --enable-more-deterministic"`
 
-* Set up [FuzzManager](https://github.com/MozillaSecurity/FuzzManager) to run as a server
+* FuzzManager
   * Ideally we should set it up properly using Apache/WSGI
     * However for demonstration purposes we shall use `runserver` and run FuzzManager in development mode locally
   * Clone FuzzManager
     * `git clone https://github.com/MozillaSecurity/FuzzManager ~/FuzzManager`
+
+* Set up [FuzzManager](https://github.com/MozillaSecurity/FuzzManager) to run as a server
   * Install FuzzManager server requirements
     * `cd ~/FuzzManager`
     * `python3 -m pip install --user --upgrade -r server/requirements.txt`
@@ -129,7 +133,7 @@ tool = jsfunfuzz
     * Currently on dual 2.7/3.5+ code
     * funfuzz has a long history, hailing from >10 years ago
       * Ported from bash scripts during the Python 2.4/2.5 days
-  * Switch to Docker ([FuzzOS](https://github.com/MozillaSecurity/fuzzos))
+  * Switch to Docker (Orion?)
   * Add more tests (currently only 45-50%)
     * We already have Travis/AppVeyor CI integration
     * The projects also integrate with `codecov.io`
