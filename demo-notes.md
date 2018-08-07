@@ -85,8 +85,8 @@
 
 * Restart
 
-* Compile a 64-bit debug deterministic SpiderMonkey shell:
-  * `python3 -u -m funfuzz.js.compile_shell -b "--enable-debug --enable-more-deterministic"`
+* Compile a 64-bit debug deterministic SpiderMonkey shell: (ideally without specifying `-r`, it is for demo purposes)
+  * `python3 -u -m funfuzz.js.compile_shell -b "--enable-debug --enable-more-deterministic"` -r 3931f461c8e8
 
 * FuzzManager
   * Ideally we should set it up properly using Apache/WSGI
