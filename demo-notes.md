@@ -47,7 +47,7 @@
 
 * Run `bootstrap.py`
   * `wget https://hg.mozilla.org/mozilla-central/raw-file/default/python/mozboot/bin/bootstrap.py`
-  * `python bootstrap.py`
+  * `python3 bootstrap.py`
   * Press `2` for Firefox for Desktop development
   * `bootstrap.py` will prompt to install prerequisites (mostly via apt-get)
   * Recommended to install Mercurial via pip
@@ -64,7 +64,7 @@
 
 * Clone [funfuzz](https://github.com/MozillaSecurity/funfuzz) off GitHub and install it via `pip`
   * `git clone https://github.com/MozillaSecurity/funfuzz ~/funfuzz`
-  * `pushd ~/funfuzz && pip install --user --upgrade -r requirements.txt && popd`
+  * `pushd ~/funfuzz && python3 -m pip install --user --upgrade -r requirements.txt && popd`
     * You need to be in the funfuzz directory for the requirements to be installed properly
 
 * Enable some Mercurial extensions
@@ -84,7 +84,7 @@
 * Restart
 
 * Compile a 64-bit debug deterministic SpiderMonkey shell:
-  * `python -u -m funfuzz.js.compile_shell -b "--enable-debug --enable-more-deterministic"`
+  * `python3 -u -m funfuzz.js.compile_shell -b "--enable-debug --enable-more-deterministic"`
 
 * Set up [FuzzManager](https://github.com/MozillaSecurity/FuzzManager) to run as a server
   * Ideally we should set it up properly using Apache/WSGI
@@ -93,14 +93,14 @@
     * `git clone https://github.com/MozillaSecurity/FuzzManager` ~/FuzzManager
   * Install FuzzManager server requirements
     * `cd ~/FuzzManager`
-    * `pip install --user --upgrade -r server/requirements.txt`
+    * `python3 -m pip install --user --upgrade -r server/requirements.txt`
     * `cd server/`
   * Configure FuzzManager
-    * `python manage.py migrate`
-    * `python manage.py createsuperuser`
+    * `python3 manage.py migrate`
+    * `python3 manage.py createsuperuser`
       * Use `fuzzmanager` as a sample username
       * Create a sample password
-    * `python manage.py get_auth_token fuzzmanager`
+    * `python3 manage.py get_auth_token fuzzmanager`
       * Note the auth token
     * `pushd ~ && htpasswd -cb .htpasswd fuzzmanager <token> && popd`
   * Create a FuzzManager configuration file
@@ -115,18 +115,18 @@ tool = jsfunfuzz
 ```
   * Make sure to use **https** when deploying a production FuzzManager server
   * Still in the `server/` directory, start up FuzzManager in developmental mode (only for this presentation purpose):
-    * `python manage.py runserver`
+    * `python3 manage.py runserver`
 
 * If bugs are hit, they should be submitted to your instance of FuzzManager.
   * If they need to be submitted manually, use:
-    * `python -u -m funfuzz.js.js_interesting --submit DUMMYVARIABLE <path to js shell> <runtime flags> <testcase>`
+    * `python3 -u -m funfuzz.js.js_interesting --submit DUMMYVARIABLE <path to js shell> <runtime flags> <testcase>`
 
 ===
 
 * Areas that can be improved:
   * Audit tested language features in jsfunfuzz
-  * Switch to using Python 3
-    * A lot of custom APIs for early versions of Python 2 have already been removed
+  * Migrate completely to using Python 3, possibly 3.6
+    * Currently on dual 2.7/3.5+ code
     * funfuzz has a long history, hailing from >10 years ago
       * Ported from bash scripts during the Python 2.4/2.5 days
   * Switch to Docker ([FuzzOS](https://github.com/MozillaSecurity/fuzzos))
@@ -136,7 +136,7 @@ tool = jsfunfuzz
 
 * Caveats:
   * It is recommended to fuzz on a machine in as native a manner as possible
-    * Known to work on Linux/macOS/Windows (0.1 legacy branch for now, until Python 3 migration is complete)
+    * Known to work on Linux/macOS/Windows
     * Known to work on Amazon EC2
     * Used to work even on small ARM boards (e.g. ODROID)
   * VirtualBox is used for demonstration only
@@ -148,6 +148,8 @@ tool = jsfunfuzz
 Note to self - Packages to download ahead of time:
 
 ```
+sudo apt-get install -d python3-pip
+
 sudo apt-get install -d autoconf2.13 build-essential nodejs python-dev python-pip python-setuptools unzip uuid zip
 
 sudo apt-get install -d autoconf automake autopoint autotools-dev debhelper dh-autoreconf dh-strip-nondeterminism gconf-service gconf-service-backend gconf2  gconf2-common gir1.2-gconf-2.0 gir1.2-gtk-2.0 gir1.2-harfbuzz-0.0 icu-devtools libarchive-cpio-perl libatk-bridge2.0-dev libatk1.0-dev libatspi2.0-dev libcairo-script-interpreter2 libcairo2-dev libcurl4 libdrm-dev libegl1-mesa-dev libepoxy-dev libfile-stripnondeterminism-perl libfontconfig1-dev libfreetype6-dev libgconf-2-4 libgconf2-doc libgdk-pixbuf2.0-dev libglib2.0-dev libglib2.0-dev-bin libglvnd-core-dev libglvnd-dev libgraphite2-dev libharfbuzz-dev libharfbuzz-gobject0 libice-dev libicu-dev libicu-le-hb-dev libicu-le-hb0 libiculx60
