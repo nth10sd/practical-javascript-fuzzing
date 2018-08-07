@@ -49,7 +49,7 @@
 
 * Run `bootstrap.py`
   * `wget https://hg.mozilla.org/mozilla-central/raw-file/default/python/mozboot/bin/bootstrap.py`
-  * `python3 bootstrap.py`
+  * `python bootstrap.py`
   * Press `2` for Firefox for Desktop development
   * `bootstrap.py` will prompt to install prerequisites (mostly via apt-get)
   * Recommended to install Mercurial via pip
