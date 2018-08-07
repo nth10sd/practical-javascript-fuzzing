@@ -45,7 +45,7 @@
 
 ===
 
-* Start of demo
+* ~~Start of demo (without slide overview)~~
 
 * Run `bootstrap.py`
   * `wget https://hg.mozilla.org/mozilla-central/raw-file/default/python/mozboot/bin/bootstrap.py`
@@ -93,6 +93,10 @@
     * However for demonstration purposes we shall use `runserver` and run FuzzManager in development mode locally
   * Clone FuzzManager
     * `git clone https://github.com/MozillaSecurity/FuzzManager ~/FuzzManager`
+
+===
+
+* Start of demo (with slide overview)
 
 * Set up [FuzzManager](https://github.com/MozillaSecurity/FuzzManager) to run as a server
   * Install FuzzManager server requirements
